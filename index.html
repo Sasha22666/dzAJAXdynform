@@ -15,7 +15,7 @@
     function testLoadData1(data) {
 
         dynForm(data, forma2);
-        $.ajax("https://sasha22666.github.io/dzAJAXdynform/forma1.json",
+        $.ajax("http://sasha22666.github.io/dzAJAXdynform/forma1.json",
             { type:'GET', dataType:'json', success:testLoadData, error:errorHandler }
         );
     }
@@ -25,7 +25,7 @@
       
     }
 
-    $.ajax("https://sasha22666.github.io/dzAJAXdynform/forma2.json",
+    $.ajax("http://sasha22666.github.io/dzAJAXdynform/forma2.json",
             { type:'GET', dataType:'json', success:testLoadData1, error:errorHandler }
         );
     
