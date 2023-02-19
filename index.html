@@ -7,49 +7,27 @@
 </head>
 
 <body>
-    <script src='https://fe.it-academy.by/JQ/jquery.js'></script>
+    <script src='http://fe.it-academy.by/JQ/jquery.js'></script>
     <script>
         "use strict";
+       
 
-        var formDef1 =
-            [
-                { label: 'Название сайта:', kind: 'longtext', name: 'sitename' },
-                { label: 'URL сайта:', kind: 'longtext', name: 'siteurl' },
-                { label: 'Посетителей в сутки:', kind: 'number', name: 'visitors' },
-                { label: 'E-mail для связи:', kind: 'shorttext', name: 'email' },
-                {
-                    label: 'Рубрика каталога:', kind: 'combo', name: 'division',
-                    variants: [{ text: 'здоровье', value: 1 }, { text: 'домашний уют', value: 2 }, { text: 'бытовая техника', value: 3 }]
-                },
-                {
-                    label: 'Размещение:', kind: 'radio', name: 'payment',
-                    variants: [{ text: 'бесплатное', value: 1 }, { text: 'платное', value: 2 }, { text: 'VIP', value: 3 }]
-                },
-                { label: 'Разрешить отзывы:', kind: 'check', name: 'votes' },
-                { label: 'Описание сайта:', kind: 'memo', name: 'description' },
-                { label: 'Опубликовать:', kind: 'submit' },
-            ];
+    function testLoadData1(data) {
 
-        var formDef2 =
-            [
-                { label: 'Фамилия:', kind: 'longtext', name: 'lastname' },
-                { label: 'Имя:', kind: 'longtext', name: 'firstname' },
-                { label: 'Отчество:', kind: 'longtext', name: 'secondname' },
-                { label: 'Возраст:', kind: 'number', name: 'age' },
-                { label: 'Зарегистрироваться:', kind: 'submit' },
-            ];
-
-    function testLoadData() {
-        $.ajax("https://fe.it-academy.by/Examples/test.html",
-            { type:'GET', dataType:'html', success:dynForm(formDef1, forma1), error:errorHandler }
+        dynForm(data, forma2);
+        $.ajax("https://sasha22666.github.io/dzAJAXdynform/forma1.json",
+            { type:'GET', dataType:'json', success:testLoadData, error:errorHandler }
         );
     }
 
-    function testLoadData1() {
-        $.ajax("https://fe.it-academy.by/Examples/test.html",
-            { type:'GET', dataType:'html', success:dynForm(formDef2, forma2), error:errorHandler }
-        );
+    function testLoadData(data) {
+        dynForm(data, forma1);
+      
     }
+
+    $.ajax("https://sasha22666.github.io/dzAJAXdynform/forma2.json",
+            { type:'GET', dataType:'json', success:testLoadData1, error:errorHandler }
+        );
     
     function errorHandler(jqXHR,statusStr,errorStr) {
         alert(statusStr+' '+errorStr);
@@ -192,9 +170,6 @@
             }
         }
     </script>
-
-    <input type="button" value="Создать форму 1" onclick='testLoadData()'>
-    <input type="button" value="Создать форму 2" onclick='testLoadData1()'>
 
     <form method="post" action="https://fe.it-academy.by/TestForm.php" target="_blank" name="forma1"></form><br>
     <form method="post" action="https://fe.it-academy.by/TestForm.php" target="_blank" name="forma2"></form>
